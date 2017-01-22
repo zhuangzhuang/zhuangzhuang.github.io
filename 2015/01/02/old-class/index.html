@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Python 旧式类的一个坑"/>
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/2015/01/02/old-class/"/>
+
+
+<meta name="description" content="来源于群的一个问题
+123456789class Foo:	def __getattr__(self, item):		#print(item) # 1. 		pass		#return lambda : &quot;foo&quot; # 2.	#def __str__(self):	#    return &quot;foo&quot;f = Foo()#print(f)  # 3.
+运行, 发现不会有问题, 但是如果去掉第三个注释">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 旧式类的一个坑">
+<meta property="og:url" content="http://zhuangzhuang.github.io/2015/01/02/old-class/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="来源于群的一个问题
+123456789class Foo:	def __getattr__(self, item):		#print(item) # 1. 		pass		#return lambda : &quot;foo&quot; # 2.	#def __str__(self):	#    return &quot;foo&quot;f = Foo()#print(f)  # 3.
+运行, 发现不会有问题, 但是如果去掉第三个注释">
+<meta property="og:updated_time" content="2017-01-22T13:31:57.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 旧式类的一个坑">
+<meta name="twitter:description" content="来源于群的一个问题
+123456789class Foo:	def __getattr__(self, item):		#print(item) # 1. 		pass		#return lambda : &quot;foo&quot; # 2.	#def __str__(self):	#    return &quot;foo&quot;f = Foo()#print(f)  # 3.
+运行, 发现不会有问题, 但是如果去掉第三个注释">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> Python 旧式类的一个坑 · 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Python 旧式类的一个坑
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015年1月2日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        <p>来源于群的一个问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">		<span class="comment">#print(item) # 1. </span></div><div class="line">		<span class="keyword">pass</span></div><div class="line">		<span class="comment">#return lambda : "foo" # 2.</span></div><div class="line">	<span class="comment">#def __str__(self):</span></div><div class="line">	<span class="comment">#    return "foo"</span></div><div class="line">f = Foo()</div><div class="line"><span class="comment">#print(f)  # 3.</span></div></pre></td></tr></table></figure>
+<p>运行, 发现不会有问题, 但是如果去掉第三个注释的部分, 运行的话会发现<code>TypeError: &#39;NoneType&#39; object is not callable</code>这个问题.</p>
+<p>开始想到的就是旧式类和新式类的可能性, 测试方法很简单</p>
+<ul>
+<li>直接放到Py3上运行 </li>
+<li>将<code>Foo</code> 修复为 <code>Foo(object)</code></li>
+</ul>
+<p>发现都能成功运行.<br>下面测试为何会失败.<br>加入调试代码去掉第一个注释. 发现在调用<code>__getattr__</code> 上调用了 <code>__str__</code> 而函数<code>__getattr__</code>返回的是 <code>None</code> 猜测根据异常是需要一个Callable的函数,去掉第二个注释, 结果输出正常.</p>
+<p>查看旧式类的属性 加入代码<code>dir(f)</code>发现结果<code>[&#39;__doc__&#39;, &#39;__module__&#39;]</code>,<br>查看新式类的属性 结果为<code>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;]</code>明显发现旧式类中没有<code>__str__</code>属性, 但是使用<code>print</code>函数时会去猜测,当函数有<code>__getattr__</code>时, 会将旧式类当作新式类处理,需要有<code>__str__</code>属性, 而没有的话会调用内部默认的打印函数去打印. 对新式类的话, 优先使用类的<code>__str__</code>函数, 如果没有的话就往上找,而<code>object</code>中有默认的<code>__str__</code>实现, 所有就会用<code>object</code>的默认的函数. 不会出现输出问题.</p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/python/">python</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/06/07/add-django-debug/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">为Django加入调试功能</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2014/12/28/hack-python-function/">
+        <span class="next-text nav-default">Hack一下Python的默认参数的坑</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

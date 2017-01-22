@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Nodejs读书笔记 2"/>
+
+
+
+
+  <meta name="keywords" content="nodejs,book," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/2014/08/09/read-node2/"/>
+
+
+<meta name="description" content="NodeJs入门经典继续昨天的看书， 这次又找了本翻了翻《Node.js入门经典》，基本还是快餐式的书，东西还是泛泛而谈。读后感如下：
+
+书中代码部分太啰嗦了，100多页的内容硬是撑到了300多页，一下子想到了《CoffeeScript程序设计》，还有西游记后传的武打设计。太重复了
+实战比上一本《NodeJs即学即用》好，很快切入了写程序模式
+虽然有好几个项目，但是太浅了吧
+和上本书一样，喜欢介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs读书笔记 2">
+<meta property="og:url" content="http://zhuangzhuang.github.io/2014/08/09/read-node2/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="NodeJs入门经典继续昨天的看书， 这次又找了本翻了翻《Node.js入门经典》，基本还是快餐式的书，东西还是泛泛而谈。读后感如下：
+
+书中代码部分太啰嗦了，100多页的内容硬是撑到了300多页，一下子想到了《CoffeeScript程序设计》，还有西游记后传的武打设计。太重复了
+实战比上一本《NodeJs即学即用》好，很快切入了写程序模式
+虽然有好几个项目，但是太浅了吧
+和上本书一样，喜欢介绍">
+<meta property="og:updated_time" content="2017-01-22T12:54:54.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs读书笔记 2">
+<meta name="twitter:description" content="NodeJs入门经典继续昨天的看书， 这次又找了本翻了翻《Node.js入门经典》，基本还是快餐式的书，东西还是泛泛而谈。读后感如下：
+
+书中代码部分太啰嗦了，100多页的内容硬是撑到了300多页，一下子想到了《CoffeeScript程序设计》，还有西游记后传的武打设计。太重复了
+实战比上一本《NodeJs即学即用》好，很快切入了写程序模式
+虽然有好几个项目，但是太浅了吧
+和上本书一样，喜欢介绍">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> Nodejs读书笔记 2 · 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Nodejs读书笔记 2
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年8月9日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJs入门经典"><span class="toc-text">NodeJs入门经典</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <h1 id="NodeJs入门经典"><a href="#NodeJs入门经典" class="headerlink" title="NodeJs入门经典"></a>NodeJs入门经典</h1><p>继续昨天的看书， 这次又找了本翻了翻<a href="http://book.douban.com/subject/23780706/" target="_blank" rel="external">《Node.js入门经典》</a>，基本还是快餐式的书，东西还是泛泛而谈。读后感如下：</p>
+<ul>
+<li>书中代码部分太啰嗦了，100多页的内容硬是撑到了300多页，一下子想到了<a href="http://book.douban.com/subject/20509115/" target="_blank" rel="external">《CoffeeScript程序设计》</a>，还有西游记后传的武打设计。太重复了</li>
+<li>实战比上一本《NodeJs即学即用》好，很快切入了写程序模式</li>
+<li>虽然有好几个项目，但是太浅了吧</li>
+<li>和上本书一样，喜欢介绍库，内部的，外部的。</li>
+<li>书中使用的express例子有bug。在<code>res.sendfile</code>部分，主要原因是<code>path.join(root,file);</code>中root为null ，<code>res.sendfile(__dirname + &#39;/index.html&#39;);</code> 改成<code>res.sendfile(&#39;/index.html&#39;,  option: {root: __dirname})</code>即可，不过貌似新版的express把这个改掉了(如果不给，直接报错！)</li>
+<li>socket.io库很给力，简直数据传输基本不需要处理，服务端和客服端一样一样的。</li>
+<li><p>注意了下NodeJs的内部小强库<code>Events</code>。这个的api是这么设计的</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">stream</span>) </span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'someone connected!'</span>);</div><div class="line">&#125;;</div><div class="line">server.on(<span class="string">'connection'</span>, callback);</div><div class="line"><span class="comment">// ...</span></div><div class="line">server.removeListener(<span class="string">'connection'</span>, callback);</div><div class="line"></div></pre></td></tr></table></figure>
+<p>  也就是说， 如果需要<code>removeListener</code>时不可以给匿名的函数， 否则不可以定位。当然可以使用<code>removeAllListeners</code>都删除了，同样是事件订阅的库<a href="https://github.com/reactive-extensions/rxjs" target="_blank" rel="external">Reactive Extensions</a> 就没有使用这样的设计，而是使用了这样的接口：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> Rx = <span class="built_in">require</span>(<span class="string">'rx'</span>);</div><div class="line"><span class="keyword">var</span> observable = Rx.Observable.returnValue(<span class="number">42</span>);</div><div class="line"><span class="keyword">var</span> subscription = observable.subscribe( <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>也就是说<code>subscription</code>可以控制退订。当然Nodejs的<code>emitter.addListener</code>没有使用这样的模式，是因为返回值为<code>this</code>即可以级联调用。</p>
+<ul>
+<li>最后还是吐槽下深入nodejs的绝对不能看这样的快餐书！！！</li>
+</ul>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/">nodejs</a>
+          
+            <a href="/tags/book/">book</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2014/08/31/twisted-intro-cn/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">深入 Twisted 学习</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2014/08/09/read-node/">
+        <span class="next-text nav-default">Nodejs读书笔记 1</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="算法学习 1"/>
+
+
+
+
+  <meta name="keywords" content="algorithm,python," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/2014/05/14/algo-1/"/>
+
+
+<meta name="description" content="内容来自挑战程序设计竞赛，原书是c语言，我这里使用Python重写
+递归算法计算递归算法时如果可以保存以前的结果应当保持便于后面使用，减少系统复杂度如：12345678memo = [0 for i in range(100)]def fib(n):    if n &amp;lt;= 1:        return n    if memo[n] != 0:        return memo[n]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法学习 1">
+<meta property="og:url" content="http://zhuangzhuang.github.io/2014/05/14/algo-1/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="内容来自挑战程序设计竞赛，原书是c语言，我这里使用Python重写
+递归算法计算递归算法时如果可以保存以前的结果应当保持便于后面使用，减少系统复杂度如：12345678memo = [0 for i in range(100)]def fib(n):    if n &amp;lt;= 1:        return n    if memo[n] != 0:        return memo[n]">
+<meta property="og:updated_time" content="2017-01-22T13:10:14.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法学习 1">
+<meta name="twitter:description" content="内容来自挑战程序设计竞赛，原书是c语言，我这里使用Python重写
+递归算法计算递归算法时如果可以保存以前的结果应当保持便于后面使用，减少系统复杂度如：12345678memo = [0 for i in range(100)]def fib(n):    if n &amp;lt;= 1:        return n    if memo[n] != 0:        return memo[n]">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> 算法学习 1 · 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          算法学习 1
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月14日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#递归算法"><span class="toc-text">递归算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#穷举-DFS-算法"><span class="toc-text">穷举(DFS) 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计算部分和"><span class="toc-text">计算部分和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#水洼的个数"><span class="toc-text">水洼的个数</span></a></li></ol></li></ol></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <p>内容来自<a href="http://book.douban.com/subject/24749842/" target="_blank" rel="external">挑战程序设计竞赛</a>，原书是c语言，我这里使用Python重写</p>
+<h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p>计算递归算法时如果可以保存以前的结果应当保持便于后面使用，减少系统复杂度<br>如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">memo = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> n</div><div class="line">    <span class="keyword">if</span> memo[n] != <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> memo[n]</div><div class="line">    memo[n] = fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</div><div class="line">    <span class="keyword">return</span> memo[n]</div></pre></td></tr></table></figure></p>
+<h2 id="穷举-DFS-算法"><a href="#穷举-DFS-算法" class="headerlink" title="穷举(DFS) 算法"></a>穷举(DFS) 算法</h2><h4 id="计算部分和"><a href="#计算部分和" class="headerlink" title="计算部分和"></a>计算部分和</h4><p>即在数组<code>[a1, a2, a3,..,aN]</code> 中能否有值的和为结果 n,<br>使用穷举法即对于每个数字都测试所以需要测试2^N次。<br>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>]</div><div class="line">k = <span class="number">15</span></div><div class="line">n = len(a)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i, sum)</span>:</span></div><div class="line">    <span class="keyword">if</span> i == n:</div><div class="line">        <span class="keyword">return</span> sum == k</div><div class="line">    <span class="comment">#不加入a[i]</span></div><div class="line">    <span class="keyword">if</span> dfs(i+<span class="number">1</span>, sum):</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="comment">#加入a[i]</span></div><div class="line">    <span class="keyword">if</span> dfs(i+<span class="number">1</span>, sum + a[i]):</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> dfs(<span class="number">0</span>, <span class="number">0</span>):</div><div class="line">        <span class="keyword">print</span> <span class="string">"Yes"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"No"</span></div></pre></td></tr></table></figure></p>
+<h4 id="水洼的个数"><a href="#水洼的个数" class="headerlink" title="水洼的个数"></a>水洼的个数</h4><p>二维平面中下雨后有很多的坑，如果是八联通的化则认为是联通的。计算个数如下图中水洼的个数为4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">............W</div><div class="line">W....WW.....W</div><div class="line">WW..WWWW..WWW</div><div class="line">WWW.WWWW...WW</div><div class="line">...WWWWW.....</div><div class="line">.....W.....WW</div></pre></td></tr></table></figure>
+<p>算法：对二维图使用DFS，遇到每个W穷举一次，每次穷举将W替换为., 主程序中统计穷举次数，穷举的次数即为水洼的个数</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">field = [</div><div class="line">    <span class="string">"............W"</span>,</div><div class="line">    <span class="string">"W....WW.....W"</span>,</div><div class="line">    <span class="string">"WW..WWWW..WWW"</span>,</div><div class="line">    <span class="string">"WWW.WWWW...WW"</span>,</div><div class="line">    <span class="string">"...WWWWW....."</span>,</div><div class="line">    <span class="string">".....W.....WW"</span>]</div><div class="line">row = len(field)</div><div class="line">col = len(field[<span class="number">0</span>])</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dumpfield</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> str <span class="keyword">in</span> field:</div><div class="line">        <span class="keyword">print</span> str</div><div class="line">    <span class="keyword">print</span> <span class="string">'------------------------'</span></div><div class="line">    <span class="keyword">print</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">global</span> field</div><div class="line">    <span class="comment">#替换访问到的W为.</span></div><div class="line">    field[x] = field[x][:y] + <span class="string">"."</span> + field[x][y+<span class="number">1</span>:]</div><div class="line">    </div><div class="line">    dumpfield()</div><div class="line"></div><div class="line">    <span class="keyword">for</span> dx <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]:</div><div class="line">        <span class="keyword">for</span> dy <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]:</div><div class="line">            nx = x + dx</div><div class="line">            ny = y + dy</div><div class="line">            <span class="comment">#判断八联通中是否有W</span></div><div class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; row <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; col <span class="keyword">and</span> field[nx][ny] == <span class="string">'W'</span>:</div><div class="line">                dfs(nx, ny)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    res = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</div><div class="line">            <span class="keyword">if</span> field[i][j] == <span class="string">'W'</span>:</div><div class="line">                dfs(i, j)</div><div class="line">                res += <span class="number">1</span></div><div class="line">    print(res)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/">algorithm</a>
+          
+            <a href="/tags/python/">python</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2014/05/15/algo-2/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">算法学习 2</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2014/05/10/2014-5-10-python-lang/">
+        <span class="next-text nav-default">Python语法 <-</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

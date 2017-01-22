@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="壮壮的博客"/>
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/page/2/"/>
+
+
+<meta name="description" content="壮壮的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="壮壮的博客">
+<meta property="og:url" content="http://zhuangzhuang.github.io/page/2/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="壮壮的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="壮壮的博客">
+<meta name="twitter:description" content="壮壮的博客">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/08/31/twisted-intro-cn/">深入 Twisted 学习</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年8月31日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>三天内把twisted学了下，内容在<a href="https://github.com/luocheng/twisted-intro-cn" target="_blank" rel="external"> twisted-intro-cn</a>，基本是将twisted的核心部分升入讲解了下。别的关于功能库的作者没有详细讲解。<br>twisted的核心部分是deferred，主要内容如下：</p>
+<ol>
+<li>讲解了单线程，异步和多线程怎样解决IO问题的缺点和优点。</li>
+<li>讲解了阻塞客服端，和非阻塞客服端的实现，引入了reactor</li>
+<li>reactor的基本操作</li>
+<li>使用twisted改写异步客服端，手动控制异步Reader（说明如果在Reader中同步调用的话，reactor没有优势）</li>
+<li>抽象出<strong>Transports</strong>,<strong>Protocols</strong>,<strong>Protocol Factories</strong>并手动管理异步操作结果。</li>
+<li>引入callback, errback机制</li>
+<li>引入<strong>Deferred</strong>，异步操作和同步操作对比，deferred调用栈.</li>
+<li>修改客服端</li>
+<li>深入Deferred讨论了同步调用栈， 异步调用栈。划分Deffered的层次调用，层次间的交错调用。</li>
+<li>修改客服端</li>
+<li>修改服务器</li>
+<li>实现服务器和客户端的双向通信</li>
+<li>在Deferred中加入了Deferred实现异步中异步</li>
+<li>引入了proxy服务器， 在proxy中决定是否引入Deferred。</li>
+<li>测试</li>
+<li>编写服务</li>
+<li>引入了<strong>yield</strong>,<strong>inlineCallbacks</strong>,原先需要以异步的异步编写变成了写个单独的函数即可。</li>
+<li>引入了<strong>DeferredList</strong>，这样就可以控制一组Deferred了。</li>
+<li>加入了cancel Deferred. 可以异步取消掉一个操作</li>
+<li>reactor中的大循环然后转化为每个Protocols小循环。从而引入了Erlang.</li>
+<li>从函数语言Haskell的惰性来简化了异步操作。</li>
+</ol>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/08/09/read-node2/">Nodejs读书笔记 2</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年8月9日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="NodeJs入门经典"><a href="#NodeJs入门经典" class="headerlink" title="NodeJs入门经典"></a>NodeJs入门经典</h1><p>继续昨天的看书， 这次又找了本翻了翻<a href="http://book.douban.com/subject/23780706/" target="_blank" rel="external">《Node.js入门经典》</a>，基本还是快餐式的书，东西还是泛泛而谈。读后感如下：</p>
+<ul>
+<li>书中代码部分太啰嗦了，100多页的内容硬是撑到了300多页，一下子想到了<a href="http://book.douban.com/subject/20509115/" target="_blank" rel="external">《CoffeeScript程序设计》</a>，还有西游记后传的武打设计。太重复了</li>
+<li>实战比上一本《NodeJs即学即用》好，很快切入了写程序模式</li>
+<li>虽然有好几个项目，但是太浅了吧</li>
+<li>和上本书一样，喜欢介绍库，内部的，外部的。</li>
+<li>书中使用的express例子有bug。在<code>res.sendfile</code>部分，主要原因是<code>path.join(root,file);</code>中root为null ，<code>res.sendfile(__dirname + &#39;/index.html&#39;);</code> 改成<code>res.sendfile(&#39;/index.html&#39;,  option: {root: __dirname})</code>即可，不过貌似新版的express把这个改掉了(如果不给，直接报错！)</li>
+<li>socket.io库很给力，简直数据传输基本不需要处理，服务端和客服端一样一样的。</li>
+<li><p>注意了下NodeJs的内部小强库<code>Events</code>。这个的api是这么设计的</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">stream</span>) </span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'someone connected!'</span>);</div><div class="line">&#125;;</div><div class="line">server.on(<span class="string">'connection'</span>, callback);</div><div class="line"><span class="comment">// ...</span></div><div class="line">server.removeListener(<span class="string">'connection'</span>, callback);</div><div class="line"></div></pre></td></tr></table></figure>
+<p>  也就是说， 如果需要<code>removeListener</code>时不可以给匿名的函数， 否则不可以定位。当然可以使用<code>removeAllListeners</code>都删除了，同样是事件订阅的库<a href="https://github.com/reactive-extensions/rxjs" target="_blank" rel="external">Reactive Extensions</a> 就没有使用这样的设计，而是使用了这样的接口：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> Rx = <span class="built_in">require</span>(<span class="string">'rx'</span>);</div><div class="line"><span class="keyword">var</span> observable = Rx.Observable.returnValue(<span class="number">42</span>);</div><div class="line"><span class="keyword">var</span> subscription = observable.subscribe( <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;);</div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>也就是说<code>subscription</code>可以控制退订。当然Nodejs的<code>emitter.addListener</code>没有使用这样的模式，是因为返回值为<code>this</code>即可以级联调用。</p>
+<ul>
+<li>最后还是吐槽下深入nodejs的绝对不能看这样的快餐书！！！</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/08/09/read-node/">Nodejs读书笔记 1</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年8月9日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="NodeJs即学即用"><a href="#NodeJs即学即用" class="headerlink" title="NodeJs即学即用"></a>NodeJs即学即用</h1><p>昨晚+今天白天看完了一本nodejs书<a href="http://book.douban.com/subject/20515024/" target="_blank" rel="external">《nodejs 即学即用》</a>,写点看完的想法吧。</p>
+<ol>
+<li>js写起来比编译系语言（c/c++）强多了，书中的代码基本都跟着写过运行了一遍</li>
+<li><p>js中的字典（对象？！）比较好写， 相比下来Python的字典比较郁闷的， js只需要<code>var obj = {name: &quot;zhuang&quot;}</code>, 而在python中必须 <code>obj = {&quot;name&quot;: &quot;zhuang&quot;}</code>, 写少了没感觉， 多了就有感觉了，虽然Python中有一种方法来Hack。如下代码：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_dict</span><span class="params">(thing)</span>:</span></div><div class="line">    <span class="keyword">return</span> dict((k, v) <span class="keyword">for</span> k, v <span class="keyword">in</span> thing.__dict__.iteritems() \</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> k.startswith(‘_’))</div><div class="line">    </div><div class="line"><span class="meta">@to_dict</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Settings</span><span class="params">(object)</span>:</span></div><div class="line">    DEBUG = <span class="keyword">True</span></div><div class="line">    APPLICATION_NAME = ‘Testing’</div><div class="line">    SUBTITLE = ‘Python <span class="keyword">is</span> a cool thing’</div></pre></td></tr></table></figure>
+</li>
+<li><p>书中介绍node感觉还是挺啰嗦的,大部分都是在介绍库的使用,只能说广而已，像后面的一些sql,nosql只要分别一个就可以了</p>
+</li>
+<li>介绍express时发现express已经更新了安装时候需要加上<code>@2.x</code></li>
+<li>NodeJs的回调真够恐怖的，不知道实际业务上是咋样的</li>
+<li>最后介绍的<code>socket.io</code>不错，可以实现在浏览器端和node端都使用同样的模式。</li>
+</ol>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/05/21/python-tips/">Python 代码段</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月21日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>内容来自于<a href="http://lucumr.pocoo.org/talks/" target="_blank" rel="external">Armin Ronacher</a>的blog，<a href="http://dev.pocoo.org/~mitsuhiko/idioms.pdf" target="_blank" rel="external">Python Idioms</a> 和 <a href="http://pocoo.org/~mitsuhiko/didntknow.pdf" target="_blank" rel="external">Things you didn’t know about Python</a> </p>
+<h1 id="cache-property"><a href="#cache-property" class="headerlink" title="cache_property"></a>cache_property</h1><p>扩展了python内部的property, 用于缓存结果，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">cached_property</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func)</span>:</span></div><div class="line">        self.func = func</div><div class="line">        self.__name__ = func.__name__</div><div class="line">        self.__doc__ = func.__doc__</div><div class="line">        self.__module__ = func.__module__</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, obj, type=None)</span>:</span></div><div class="line">        <span class="keyword">if</span> obj <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">return</span> self</div><div class="line">        value = obj.__dict__.get(self.__name__, _missing)</div><div class="line">        <span class="keyword">if</span> value <span class="keyword">is</span> _missing:</div><div class="line">            value = self.func(obj)</div><div class="line">            obj.__dict__[self.__name__] = value</div><div class="line">        <span class="keyword">return</span> value</div></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/05/21/python-resource/">Python的几个好学习网站</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月21日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <ol>
+<li><a href="http://lucumr.pocoo.org/talks/" target="_blank" rel="external">http://lucumr.pocoo.org/talks/</a> flask作者自己的一些资源</li>
+<li><a href="http://www.dabeaz.com/talks.html" target="_blank" rel="external">http://www.dabeaz.com/talks.html</a> ply作者的一些好的资源</li>
+<li><a href="http://pymotw.com/2/" target="_blank" rel="external">http://pymotw.com/2/</a> 介绍python模块的使用方法，比官方的要详细得多</li>
+<li><a href="http://islab.org/stackless/2007/stackless.html" target="_blank" rel="external">http://islab.org/stackless/2007/stackless.html</a> 介绍Stackless Pythonde </li>
+<li><a href="http://xlambda.com/gevent-tutorial/" target="_blank" rel="external">http://xlambda.com/gevent-tutorial/</a> 介绍Gevent的</li>
+</ol>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/05/15/algo-2/">算法学习 2</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月15日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h2 id="宽度优先搜索"><a href="#宽度优先搜索" class="headerlink" title="宽度优先搜索"></a>宽度优先搜索</h2><p>宽度优先搜索可以用来解决迷宫搜索问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#迷宫问题</span></div><div class="line">maze = [</div><div class="line">    <span class="string">"#S######.#"</span>,</div><div class="line">    <span class="string">"......#..#"</span>,</div><div class="line">    <span class="string">".#.#.#.#.#"</span>,</div><div class="line">    <span class="string">".#.......#"</span>,</div><div class="line">    <span class="string">"##....###."</span>,</div><div class="line">    <span class="string">"#...#...#."</span>,</div><div class="line">    <span class="string">".........."</span>,</div><div class="line">    <span class="string">"..#####G##"</span></div><div class="line">]</div><div class="line">row = len(maze)</div><div class="line">col = len(maze[<span class="number">0</span>])</div><div class="line"></div><div class="line">inf = <span class="number">10000000000</span></div><div class="line">sx, sy = <span class="number">0</span>, <span class="number">1</span></div><div class="line">gx, gy = <span class="number">7</span>, <span class="number">7</span></div><div class="line"></div><div class="line">dxs = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>]</div><div class="line">dys = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>]</div><div class="line"></div><div class="line"><span class="comment">#记录目前为止最短路径</span></div><div class="line">d = [[inf <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">100</span>)]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">import</span> Queue</div><div class="line">    que = Queue.Queue()</div><div class="line">    que.put((sx, sy))</div><div class="line">    d[sx][sy] = <span class="number">0</span> <span class="comment">#初始为0</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> <span class="keyword">not</span> que.empty():</div><div class="line">        dumptable(d, row, col)</div><div class="line">        p = que.get()</div><div class="line">        <span class="keyword">if</span> p[<span class="number">0</span>] == gx <span class="keyword">and</span> p[<span class="number">1</span>] == gy:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> zip(dxs, dys):</div><div class="line">            nx = p[<span class="number">0</span>] + dx</div><div class="line">            ny = p[<span class="number">1</span>] + dy</div><div class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; row <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; col <span class="keyword">and</span> maze[nx][ny] != <span class="string">'#'</span> \</div><div class="line">                                            <span class="keyword">and</span> d[nx][ny] == inf:</div><div class="line">                que.put((nx, ny))</div><div class="line">                d[nx][ny] = d[p[<span class="number">0</span>]][p[<span class="number">1</span>]] + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> d[gx][gy]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> bfs()</div></pre></td></tr></table></figure>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>主要的算法就是从最大的找，然后找次大的，典型的问题如找钱问题，用最少的硬币个数找钱。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#找钱问题</span></div><div class="line"><span class="comment">#钱的面值</span></div><div class="line">V = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">500</span>]</div><div class="line"><span class="comment">#对应的钱的数目</span></div><div class="line">C = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>,  <span class="number">3</span>,  <span class="number">0</span>,   <span class="number">2</span>]</div><div class="line">A = <span class="number">620</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(A)</span>:</span></div><div class="line">    ans = <span class="number">0</span></div><div class="line">    VC = zip(V, C)</div><div class="line">    VC.reverse()</div><div class="line">    <span class="keyword">for</span> v, c <span class="keyword">in</span> VC:</div><div class="line">        t = min(A / v, c)</div><div class="line">        A -= t * v</div><div class="line">        ans += t</div><div class="line">    <span class="keyword">print</span> ans</div></pre></td></tr></table></figure>
+<h3 id="区间问题"><a href="#区间问题" class="headerlink" title="区间问题"></a>区间问题</h3><p>使用的贪心排序是尽量做将结束最早的任务。<br>代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 区间问题</span></div><div class="line">S = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]  <span class="comment">#起始时间</span></div><div class="line">T = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>] <span class="comment">#结束时间</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    TS = zip(T, S)</div><div class="line">    <span class="comment">#按照起始时间排序</span></div><div class="line">    TS.sort()</div><div class="line"></div><div class="line">    ans = <span class="number">0</span></div><div class="line">    last = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> t, s <span class="keyword">in</span> TS:</div><div class="line">        <span class="keyword">if</span> last &lt; s:</div><div class="line">            last = t</div><div class="line">            ans += <span class="number">1</span></div><div class="line">    print(ans)</div></pre></td></tr></table></figure>
+<h3 id="字典序问题"><a href="#字典序问题" class="headerlink" title="字典序问题"></a>字典序问题</h3><p>规则输入一字符串A, 每次取一个字符只能从两边取，取出之后插入结果的末尾。使得目标字符串的字典序最小。<br>如 A=”ABC” D=”X”</p>
+<blockquote>
+<ol>
+<li>从左边取 A=”BC” D=”XA”</li>
+<li>从右边取 A=”AB” D=”XC”</li>
+</ol>
+</blockquote>
+<p>显然使用方法1</p>
+<p>存在一种情况 A=”BACB”,<br>这时候是从左边取呢还是从右边取呢？</p>
+<blockquote>
+<ul>
+<li>如果从左边取 A=”ACB” 下一个肯定取 A</li>
+<li>如果从右边取 A=”BAC” 下一个肯定取 B</li>
+</ul>
+</blockquote>
+<p>所以这时候需要测试，次两边的字符哪边小取哪边，以便与小的字符快速取出</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(S)</span>:</span></div><div class="line">    a = <span class="number">0</span></div><div class="line">    b = len(S) - <span class="number">1</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> a &lt;= b:</div><div class="line">        left = <span class="keyword">False</span></div><div class="line">        i = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">if</span> a + i &gt; b: <span class="keyword">break</span> <span class="comment">#与for中的条件相反</span></div><div class="line">            <span class="comment">#查找两边最小的</span></div><div class="line">            <span class="keyword">if</span> S[a + i] &lt; S[b - i]:</div><div class="line">                left = <span class="keyword">True</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">elif</span> S[a + i] &gt; S[b - i]:</div><div class="line">                left = <span class="keyword">False</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            i += <span class="number">1</span> <span class="comment"># Python中没有c/java中的 for循环使用while模拟</span></div><div class="line">        <span class="keyword">if</span> left:</div><div class="line">            res.append(S[a])</div><div class="line">            a += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            res.append(S[b])</div><div class="line">            b -= <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> <span class="string">""</span>.join(res)</div><div class="line"></div><div class="line"><span class="keyword">print</span> solve(<span class="string">"ACDBCB"</span>)</div></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/05/14/algo-1/">算法学习 1</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月14日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>内容来自<a href="http://book.douban.com/subject/24749842/" target="_blank" rel="external">挑战程序设计竞赛</a>，原书是c语言，我这里使用Python重写</p>
+<h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p>计算递归算法时如果可以保存以前的结果应当保持便于后面使用，减少系统复杂度<br>如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">memo = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> n</div><div class="line">    <span class="keyword">if</span> memo[n] != <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> memo[n]</div><div class="line">    memo[n] = fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>)</div><div class="line">    <span class="keyword">return</span> memo[n]</div></pre></td></tr></table></figure></p>
+<h2 id="穷举-DFS-算法"><a href="#穷举-DFS-算法" class="headerlink" title="穷举(DFS) 算法"></a>穷举(DFS) 算法</h2><h4 id="计算部分和"><a href="#计算部分和" class="headerlink" title="计算部分和"></a>计算部分和</h4><p>即在数组<code>[a1, a2, a3,..,aN]</code> 中能否有值的和为结果 n,<br>使用穷举法即对于每个数字都测试所以需要测试2^N次。<br>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>]</div><div class="line">k = <span class="number">15</span></div><div class="line">n = len(a)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i, sum)</span>:</span></div><div class="line">    <span class="keyword">if</span> i == n:</div><div class="line">        <span class="keyword">return</span> sum == k</div><div class="line">    <span class="comment">#不加入a[i]</span></div><div class="line">    <span class="keyword">if</span> dfs(i+<span class="number">1</span>, sum):</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="comment">#加入a[i]</span></div><div class="line">    <span class="keyword">if</span> dfs(i+<span class="number">1</span>, sum + a[i]):</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> dfs(<span class="number">0</span>, <span class="number">0</span>):</div><div class="line">        <span class="keyword">print</span> <span class="string">"Yes"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"No"</span></div></pre></td></tr></table></figure></p>
+<h4 id="水洼的个数"><a href="#水洼的个数" class="headerlink" title="水洼的个数"></a>水洼的个数</h4><p>二维平面中下雨后有很多的坑，如果是八联通的化则认为是联通的。计算个数如下图中水洼的个数为4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">............W</div><div class="line">W....WW.....W</div><div class="line">WW..WWWW..WWW</div><div class="line">WWW.WWWW...WW</div><div class="line">...WWWWW.....</div><div class="line">.....W.....WW</div></pre></td></tr></table></figure>
+<p>算法：对二维图使用DFS，遇到每个W穷举一次，每次穷举将W替换为., 主程序中统计穷举次数，穷举的次数即为水洼的个数</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">field = [</div><div class="line">    <span class="string">"............W"</span>,</div><div class="line">    <span class="string">"W....WW.....W"</span>,</div><div class="line">    <span class="string">"WW..WWWW..WWW"</span>,</div><div class="line">    <span class="string">"WWW.WWWW...WW"</span>,</div><div class="line">    <span class="string">"...WWWWW....."</span>,</div><div class="line">    <span class="string">".....W.....WW"</span>]</div><div class="line">row = len(field)</div><div class="line">col = len(field[<span class="number">0</span>])</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dumpfield</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> str <span class="keyword">in</span> field:</div><div class="line">        <span class="keyword">print</span> str</div><div class="line">    <span class="keyword">print</span> <span class="string">'------------------------'</span></div><div class="line">    <span class="keyword">print</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">global</span> field</div><div class="line">    <span class="comment">#替换访问到的W为.</span></div><div class="line">    field[x] = field[x][:y] + <span class="string">"."</span> + field[x][y+<span class="number">1</span>:]</div><div class="line">    </div><div class="line">    dumpfield()</div><div class="line"></div><div class="line">    <span class="keyword">for</span> dx <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]:</div><div class="line">        <span class="keyword">for</span> dy <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]:</div><div class="line">            nx = x + dx</div><div class="line">            ny = y + dy</div><div class="line">            <span class="comment">#判断八联通中是否有W</span></div><div class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; row <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; col <span class="keyword">and</span> field[nx][ny] == <span class="string">'W'</span>:</div><div class="line">                dfs(nx, ny)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">()</span>:</span></div><div class="line">    res = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(row):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(col):</div><div class="line">            <span class="keyword">if</span> field[i][j] == <span class="string">'W'</span>:</div><div class="line">                dfs(i, j)</div><div class="line">                res += <span class="number">1</span></div><div class="line">    print(res)</div></pre></td></tr></table></figure></p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/05/10/2014-5-10-python-lang/">Python语法 <-</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年5月10日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>在看代码<a href="https://github.com/ajalt/fuckitpy/blob/master/fuckit.py" target="_blank" rel="external">fuckit</a>的时候发现个好坑的python语法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">source = <span class="string">'\n'</span>.join(lines)</div><div class="line">source &lt;- <span class="keyword">True</span> <span class="comment"># Dereference assignment to fix truthiness</span></div></pre></td></tr></table></figure>
+<p>其中的&lt;-是个什么意思呢<br>可以在IPython中测试下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">"abc"</span> &lt;- <span class="keyword">True</span></div><div class="line"><span class="comment"># False</span></div><div class="line"><span class="string">"abc"</span> &lt;- <span class="keyword">True</span></div><div class="line"><span class="comment"># False</span></div></pre></td></tr></table></figure>
+<p>以为是什么高级的Python语法，后来群里的人说道这其实一个这样子看<code>&lt;-</code> 等于 <code>&lt;</code> 和 <code>-</code> 也就是说 先计算 <code>-True #-1</code> 然后计算 <code>&quot;abc&quot; &lt; -1</code>最后结果为 <code>False</code></p>
+<p>最后使用<code>ast</code>测试，代码如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ast</div><div class="line">code = <span class="string">"'abc' &lt;- True"</span></div><div class="line">code_ast = ast.parse(code)</div><div class="line"><span class="keyword">print</span> ast.dump(code_ast)</div><div class="line"><span class="comment">#Module(body=[Expr(value=Compare(left=Str(s='abc'), ops=[Lt()], comparators=[UnaryOp(op=USub(), operand=Name(id='True', ctx=Load()))]))])</span></div></pre></td></tr></table></figure></p>
+<p>由此可以了解python内部的处理方式了。</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2013/11/12/Principles-of-Reactive-Programming-2/">Principles of Reactive Programming-2</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2013年11月12日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="第二节课笔记"><a href="#第二节课笔记" class="headerlink" title="第二节课笔记"></a>第二节课笔记</h1><h3 id="Function-and-State"><a href="#Function-and-State" class="headerlink" title="Function and State"></a>Function and State</h3><p>使用Bank说明可变的Object,使用2个例子说明不变函数, 可变函数</p>
+<h3 id="Identity-and-Change"><a href="#Identity-and-Change" class="headerlink" title="Identity and Change"></a>Identity and Change</h3><p>说明两个变量可以相同</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> x = <span class="keyword">new</span> <span class="type">Obj</span></div><div class="line"><span class="keyword">val</span> y = <span class="keyword">new</span> <span class="type">Obj</span></div><div class="line">f(x, y)</div><div class="line"></div><div class="line"><span class="keyword">val</span> x = <span class="keyword">new</span> <span class="type">Obj</span></div><div class="line"><span class="keyword">val</span> y = <span class="keyword">new</span> <span class="type">Obj</span></div><div class="line">f(x, x)</div></pre></td></tr></table></figure>
+<p>如果 <code>f(x, y)</code> 和 <code>f(x, x)</code> 相同可以说明x,y 相同</p>
+<p>语言中不使用这样的实现<br><code>val x = new Obj --&gt; val x = new Obj</code><br><code>val y = x       --&gt; val y = new Obj</code></p>
+<h3 id="Loops"><a href="#Loops" class="headerlink" title="Loops"></a>Loops</h3><p><code>while</code>是scala语言内置标识符, 但是可以使用函数模拟</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">WHILE</span></span>(condition: =&gt; <span class="type">Boolean</span>)(command: =&gt; <span class="type">Unit</span>): <span class="type">Unit</span> =</div><div class="line">	<span class="keyword">if</span> (condition) &#123;</div><div class="line">		command</div><div class="line">		<span class="type">WHILE</span>(condition)(command)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> ()</div></pre></td></tr></table></figure>    
+<p><code>WHILE</code> 是尾递归函数</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="type">REPEAT</span>&#123;</div><div class="line">	command</div><div class="line">&#125;(condition)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">REPEAT</span></span>(command: =&gt; <span class="type">Unit</span>)(condition: =&gt; <span class="type">Boolean</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	command</div><div class="line">	<span class="keyword">if</span> (condition)()		</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="type">REPEAT</span>(command)(condition)</div><div class="line">&#125;</div></pre></td></tr></table></figure>    
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="type">REPEAT</span>&#123;</div><div class="line">	command</div><div class="line">&#125;<span class="type">UNTIL</span> (condition)</div><div class="line"></div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
+<p><code>For-Loops</code> 使用<code>foreach</code>转化<br>而<code>for yield</code> 使用<code>map,flatMap</code>转化</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foreach</span></span>(f: <span class="type">T</span>=&gt; <span class="type">Unit</span>): <span class="type">Unit</span> =</div><div class="line">	<span class="comment">// ...</span></div><div class="line"></div><div class="line"><span class="keyword">for</span>(i &lt;- <span class="number">1</span> until <span class="number">3</span>; j &lt;- <span class="string">"abc"</span>) println(i + <span class="string">" "</span> + j)</div><div class="line"><span class="comment">//可转化为</span></div><div class="line">(<span class="number">1</span> until <span class="number">3</span>) foreach ( i =&gt; <span class="string">"abc"</span> foreach (j =&gt; println(i + <span class="string">" "</span> + j)))</div><div class="line"></div></pre></td></tr></table></figure>    
+<h3 id="Completed-Extended-Example-Discrete-Event-Simulation"><a href="#Completed-Extended-Example-Discrete-Event-Simulation" class="headerlink" title="Completed Extended Example: Discrete Event Simulation"></a>Completed Extended Example: Discrete Event Simulation</h3><p>模拟数字电路<br>Inverse<br>And<br>Or<br>使用wire连接, 有延时<br>半加器</p>
+<p><code>S = a | b &amp; ^(a&amp;b)</code><br><code>C = a &amp; b</code></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">val</span> a, b, c = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line"></div><div class="line"><span class="comment">//每一个函数都有个side Effect(产生一个门)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverter</span></span>(input: <span class="type">Wire</span>, output: <span class="type">Wire</span>): <span class="type">Unit</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">andGate</span></span>(a1: <span class="type">Wire</span>, a2: <span class="type">Wire</span>, output: <span class="type">Wire</span>): <span class="type">Unit</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">orGate</span></span>(o1: <span class="type">Wire</span>, o2: <span class="type">Wire</span>, output: <span class="type">Wire</span>): <span class="type">Unit</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">halfAdder</span></span>(a: <span class="type">Wire</span>, b: <span class="type">Wire</span>, s: <span class="type">Wire</span>, c: <span class="type">Wire</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="keyword">val</span> d = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line">	<span class="keyword">val</span> e = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line">	orGate(a, b, d)</div><div class="line">	andGate(a, b, c)</div><div class="line">	inverter(c, e)</div><div class="line">	andGate(d, e, s)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用半加器做成一个全加器<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fullAdder</span></span>(a: <span class="type">Wire</span>, b: <span class="type">Wire</span>, cin: <span class="type">Wire</span>, sum: <span class="type">Wire</span>, count: <span class="type">Wire</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="keyword">val</span> s = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line">	<span class="keyword">val</span> c1 = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line">	<span class="keyword">val</span> c2 = <span class="keyword">new</span> <span class="type">Wire</span></div><div class="line">	halfAdder(b, cin, s, c1)</div><div class="line">	halfAdder(a, s, sum, c2)</div><div class="line">	orGate(c1, c2, cout)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Discrete-Event-Simulation-API-and-Usage"><a href="#Discrete-Event-Simulation-API-and-Usage" class="headerlink" title="Discrete Event Simulation: API and Usage"></a>Discrete Event Simulation: API and Usage</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">type</span> <span class="title">Action</span> </span>= () =&gt; <span class="type">Unit</span></div><div class="line"></div><div class="line"><span class="comment">//定义连线(Wire)</span></div><div class="line"><span class="type">API</span>: getSignal setSignal addAction</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wire</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">var</span> sigVal = <span class="literal">false</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">var</span> actions: <span class="type">List</span>[<span class="type">Action</span>] = <span class="type">List</span>()</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">getSignal</span></span>: <span class="type">Boolean</span> = sigVal</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">setSignal</span></span>(s: <span class="type">Boolean</span>): <span class="type">Unit</span> = </div><div class="line">		<span class="keyword">if</span> (s != sigVal) &#123;</div><div class="line">			sigVal = s</div><div class="line">			actions foreach (_())</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">addAction</span></span>(a: <span class="type">Action</span>): <span class="type">Unit</span> = &#123;</div><div class="line">		actions = a :: actions</div><div class="line">		a()</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//反相器</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">inverter</span></span>(input: <span class="type">Wire</span>, output: <span class="type">Wire</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">invertAction</span></span>(): <span class="type">Unit</span> = &#123;</div><div class="line">		<span class="keyword">val</span> inputSig = input.getSignal</div><div class="line">		afterDelay(<span class="type">InverterDelay</span>)&#123;</div><div class="line">			output setSignal !inputSig</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	input addAction invertAction</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// AndGate</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">andGate</span></span>(in1: <span class="type">Wire</span>, in2: <span class="type">Wire</span>, output: <span class="type">Wire</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">addAction</span></span>(): <span class="type">Unit</span> = &#123;</div><div class="line">		<span class="keyword">val</span> in1Sig = in1.getSignal</div><div class="line">		<span class="keyword">val</span> in2Sig = in2.getSignal</div><div class="line">		afterDelay(<span class="type">AndGateDelay</span>) &#123;</div><div class="line">			output setSignal (in1Sig &amp; in2Sig)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	in1 addAction andAction</div><div class="line">	in2 addAction andAction</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// OrGate</span></div><div class="line"><span class="comment">// 实现省略</span></div></pre></td></tr></table></figure>
+<p>关于</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addAction</span></span>(): <span class="type">Unit</span> = &#123;</div><div class="line">		<span class="keyword">val</span> in1Sig = in1.getSignal</div><div class="line">		<span class="keyword">val</span> in2Sig = in2.getSignal</div><div class="line">		afterDelay(<span class="type">AndGateDelay</span>) &#123;</div><div class="line">			output setSignal (in1Sig &amp; in2Sig)</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addAction</span></span>(): <span class="type">Unit</span> = &#123;		</div><div class="line">		afterDelay(<span class="type">AndGateDelay</span>) &#123;</div><div class="line">			output setSignal (in1.getSignal &amp; in2.getSignal)</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>的差别.<br>第二个不符合</p>
+<h3 id="Discrete-Event-Simluation-Implementation-and-Test"><a href="#Discrete-Event-Simluation-Implementation-and-Test" class="headerlink" title="Discrete Event Simluation: Implementation and Test"></a>Discrete Event Simluation: Implementation and Test</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">afterDelay</span></span>(delay: <span class="type">Int</span>)(block: =&gt; <span class="type">Unit</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="keyword">val</span> item = <span class="type">Event</span>(currentTime + delay, ()=&gt; block)</div><div class="line">	agenda = insert(agenda, item)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 事件注意排序(可以使用堆实现)</span></div><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">def</span> <span class="title">insert</span></span>(ag: <span class="type">List</span>[<span class="type">Event</span>], item: <span class="type">Event</span>): <span class="type">List</span>[<span class="type">Event</span>] = ag <span class="keyword">match</span> &#123;</div><div class="line">	<span class="keyword">case</span> first :: rest <span class="keyword">if</span> first.time &lt;= item.time =&gt;</div><div class="line">		first :: insert(rest, item)</div><div class="line">	<span class="keyword">case</span> _ =&gt;</div><div class="line">		item :: ag</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实际运行Loop<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">def</span> <span class="title">loop</span></span>(): <span class="type">Unit</span> = agenda <span class="keyword">match</span> &#123;</div><div class="line">	<span class="keyword">case</span> first :: rest =&gt;</div><div class="line">		agenda = rest</div><div class="line">		current = first.time</div><div class="line">		first.action</div><div class="line">		loop()</div><div class="line">	<span class="keyword">case</span> <span class="type">Nil</span> =&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还可以加入Probes(探头)</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">probe</span></span>(name: <span class="type">String</span>, wire: <span class="type">Wire</span>): <span class="type">Unit</span> = &#123;</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">probeAction</span></span>(): <span class="type">Unit</span> = &#123;</div><div class="line">	println(<span class="string">s"<span class="subst">$name</span> <span class="subst">$currentTime</span> value = <span class="subst">$&#123;wire.getSignal&#125;</span>"</span>)</div><div class="line">	&#125;</div><div class="line">	wire addAction probeAction</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于 <code>orGate</code> 的实现, <code>orGate</code> 可以使用andGate和inverter配合实现因为 <code>a | b = ^(^a &amp; ^b</code>)</p>
+<p>关于离散信号模拟的资料还有</p>
+<ol>
+<li><a href="http://www.grant-olson.net/files/why_stackless.html#pushing-data" target="_blank" rel="external">stacklesspython 实现</a></li>
+<li><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.4" target="_blank" rel="external">sicp 介绍</a></li>
+</ol>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    
+      <a class="prev" href="/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    
+    
+  </nav>
+
+
+          </div>
+          
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

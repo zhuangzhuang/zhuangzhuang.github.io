@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="壮壮的博客"/>
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/"/>
+
+
+<meta name="description" content="壮壮的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="壮壮的博客">
+<meta property="og:url" content="http://zhuangzhuang.github.io/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="壮壮的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="壮壮的博客">
+<meta name="twitter:description" content="壮壮的博客">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/01/22/fix-pycharm-jupyter/">解决Pycharm不能使用jupyter问题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年1月22日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>打算在<code>pycharm</code>中使用<code>jupyter</code>, 但是发现新版本的jupyter需要设置下才可以使用，网上刚好也没有解决方法<br>也有人提问了<a href="https://www.heapoverflow.me/question-jupyter-notebook-in-pycharm-41736309" target="_blank" rel="external">Jupyter Notebook in Pycharm</a></p>
+<p>原始问题如下:</p>
+<p><img src="/images/python/jupyter_error.png" alt="pycharm_jupyter_error"></p>
+<p>可以看到有2个问题</p>
+<ol>
+<li>需要使用浏览器登陆，使用token认证一次</li>
+<li>post 中加入<code>_xsrf</code>解决csrf问题 </li>
+</ol>
+<p>解决如下,命令行中输入<code>jupyter notebook --generate-config</code>, 生成配置文件<code>jupyter_notebook_config.py</code><br>加入下面配置即可</p>
+<ol>
+<li><code>c.NotebookApp.disable_check_xsrf = True</code></li>
+<li><code>c.NotebookApp.token = &#39;&#39;</code></li>
+</ol>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/01/22/fable-async/">Fable 排序</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年1月22日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="Fable来做异步排序"><a href="#Fable来做异步排序" class="headerlink" title="Fable来做异步排序"></a>Fable来做异步排序</h1><p>题目来自于<a href="https://www.zhihu.com/question/41642706" target="_blank" rel="external">我用js写了一个冒泡排序法，怎么用html和css把排序过程展现出来？</a></p>
+<p>简单的说明就是在js中怎么做sleep来做到异步效果。</p>
+<p>原来的解决方法是用<a href="https://www.zhihu.com/question/41642706/answer/92225439" target="_blank" rel="external">windjs</a> 不够后来老赵也不维护了，</p>
+<p>es7中有async, await方案，不过暂时需要babel去编译， 原生支持async/await的有微软的Edge，和对于的js引擎。</p>
+<p>下面来将<a href="http://fsprojects.github.io/Fable/" target="_blank" rel="external">Fable</a>这个应该是F#的js版本，F#有很强的一个技术叫<a href="https://msdn.microsoft.com/visualfsharpdocs/conceptual/computation-expressions-%5bfsharp%5d" target="_blank" rel="external">Computation Expressions</a>定义好预设的几个函数后，就可以组合使用。将原来的流程全部碎片成函数，但是编写的时候还是按照顺序编写，自己在碎片函数中控制流向。</p>
+<p>F#同步排序如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let swap (arr: int array) i j = </div><div class="line">    let tmp = arr.[i]</div><div class="line">    arr.[i] &lt;- arr.[j]</div><div class="line">    arr.[j] &lt;- tmp</div><div class="line"></div><div class="line">let bubbleSort (arr: int array) = </div><div class="line">    for x in [0..arr.Length-1] do</div><div class="line">        for y in [0 .. arr.Length-x-1] do</div><div class="line">            if arr.[y] &gt; arr.[y+1] then</div><div class="line">                swap arr y (y+1)</div></pre></td></tr></table></figure>
+<p>浏览器启动后都是一瞬间结束，如果要暂停一会儿查看内部的信息会很困难。</p>
+<p>基于F#的async可以轻松达到效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let asyncBubbleSort (arr: int array) = async &#123;  #1</div><div class="line">    for x in [0..arr.Length-1] do</div><div class="line">        for y in [0 .. arr.Length-x-1] do</div><div class="line">            if arr.[y] &gt; arr.[y+1] then</div><div class="line">                do! Async.Sleep(500)           #2</div><div class="line">                printfn &quot;swaping: %d &lt;-&gt; %d&quot; arr.[y] arr.[y+1]</div><div class="line">                swap arr y (y+1)</div><div class="line">    printfn &quot;down!&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let arr = [|0;11;2;4;7;3|]</div><div class="line">asyncBubbleSort arr</div><div class="line">|&gt; Async.StartImmediate  #3</div></pre></td></tr></table></figure>
+<p>再3处加入一点点代码就可以达到效果。</p>
+<p>参考</p>
+<p><a href="http://tomasp.net/academic/papers/async/" target="_blank" rel="external">http://tomasp.net/academic/papers/async/</a></p>
+<p><a href="http://tomasp.net/academic/papers/computation-zoo/" target="_blank" rel="external">http://tomasp.net/academic/papers/computation-zoo/</a></p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/10/24/babel-trans-for/">优化javascript中的forEach</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年10月24日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="翻译js中的forEach为for-x-in-o"><a href="#翻译js中的forEach为for-x-in-o" class="headerlink" title="翻译js中的forEach为for x in o"></a>翻译js中的<code>forEach</code>为<code>for x in o</code></h1><p>想法来自weibo: <a href="http://weibo.com/1642632462/Eedu9mp6x" target="_blank" rel="external">http://weibo.com/1642632462/Eedu9mp6x</a></p>
+<p>代码如下:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ArrayFucntionVisitor: TR.Visitor = &#123;</div><div class="line">    ArrowFunctionExpression(path)&#123;</div><div class="line">        <span class="keyword">var</span> p0 = path.node.params[<span class="number">0</span>];</div><div class="line">        <span class="keyword">var</span> oldName = p0.name;</div><div class="line">        path.scope.rename(oldName, <span class="keyword">this</span>.itemName);</div><div class="line">    &#125;,</div><div class="line">    FunctionExpression(path)&#123;</div><div class="line">        <span class="keyword">var</span> p0 = path.node.params[<span class="number">0</span>];</div><div class="line">        <span class="keyword">var</span> oldName = p0.name;</div><div class="line">        path.scope.rename(oldName, <span class="keyword">this</span>.itemName);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> MyVisitor: TR.Visitor = &#123;</div><div class="line">    CallExpression(path)&#123;</div><div class="line">        <span class="keyword">if</span>(T.isMemberExpression(path.node.callee))&#123;</div><div class="line">            <span class="keyword">let</span> member = path.node.callee;</div><div class="line">            <span class="keyword">if</span>(T.isIdentifier(member.property, &#123;name: <span class="string">'forEach'</span>&#125;))&#123;</div><div class="line">                <span class="keyword">var</span> arg0 = path.node.arguments[<span class="number">0</span>];</div><div class="line">                <span class="keyword">var</span> identifer = path.scope.generateUidIdentifier(<span class="string">'item'</span>);</div><div class="line">                <span class="keyword">if</span>(T.isFunctionExpression(arg0) || T.isArrowFunctionExpression(arg0))&#123;                                                           </div><div class="line">                    path.traverse(ArrayFucntionVisitor, &#123;itemName: identifer.name&#125;)</div><div class="line"></div><div class="line">                    <span class="keyword">var</span> newFor = T.forInStatement(T.variableDeclaration(<span class="string">"let"</span>, [T.variableDeclarator(identifer)]),</div><div class="line">                                    path.node.callee.object, arg0.body);</div><div class="line">                    path.insertAfter(newFor);</div><div class="line">                    path.remove();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;        </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
+<p>ps: 仅仅考虑简单情况</p>
+<p>结果如下:<br><img src="/images/babel_for_opt.png" alt="res"></p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/09/10/funky-functions/">好玩的函数</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年9月10日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="Funky-Functions-Channel9"><a href="#Funky-Functions-Channel9" class="headerlink" title="Funky-Functions[Channel9]"></a>Funky-Functions[Channel9]</h1><p>视频地址，<a href="https://channel9.msdn.com/Blogs/semjs/semjs201505fun" target="_blank" rel="external">Funky Functions by Spencer Jobe</a></p>
+<p>介绍如何在js中不使用<code>if</code>, <code>while</code>, <code>for</code>, <code>eval</code>, <code>try</code>, <code>catch</code>, <code>finally</code>, <code>switch</code></p>
+<p>技术，使用函数实现</p>
+<p>如最简单的if</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">0</span></div><div class="line"><span class="keyword">if</span>(x === <span class="number">0</span>) &#123;</div><div class="line">	alert(<span class="string">"x is zero"</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//可等效于</span></div><div class="line">(x === <span class="number">0</span>) &amp;&amp; (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">"x is zero"</span>)</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
+<p>封装一下如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> ELSE = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> IF = <span class="function"><span class="keyword">function</span>(<span class="params">cmp, trueFn</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> emptyFn;</div><div class="line">	cmp &amp;&amp; trueFn();</div><div class="line">	cmp &amp;&amp; (emptyFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;());</div><div class="line">	returm emptyFn || IF;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Test</span></div><div class="line">IF(x == <span class="number">0</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">"x is zero"</span>);</div><div class="line">&#125;)(x == <span class="number">1</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	alert(<span class="string">"x is one"</span>)</div><div class="line">&#125;)(ELSE, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">"x is somthing else"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Eval实现如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EVAL = <span class="function"><span class="keyword">function</span>(<span class="params">scriptValue</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">	<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">	script.text = scriptValue;</div><div class="line">	head.appendChild(script);</div><div class="line">	head.removeChild(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Try/Catch/Finally实现如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> TRY_STATUS = <span class="number">0</span>;</div><div class="line"><span class="keyword">var</span> TRY = <span class="function"><span class="keyword">function</span>(<span class="params">tryFn, catchFn, finallyFn</span>)</span>&#123;</div><div class="line">	TRY_STATUS = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> fn = <span class="string">"(function exec()&#123;\n("</span> + </div><div class="line">		<span class="built_in">String</span>(tryFn)+<span class="string">"())&#125;;\n TRY_STATUS=1;\n&#125;());"</span>;</div><div class="line">	EVAL(fn);</div><div class="line">	IF(TRY_STATUS === <span class="number">0</span>, catchFn);</div><div class="line">	IF(finallyFn, finallyFn);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>视频中还有<code>FOR</code>, <code>WHILE</code>没有讲到。</p>
+<p>附录：</p>
+<p><a href="https://book.douban.com/subject/3012828/" target="_blank" rel="external">JAVASCRIPT语言精髓与编程实践</a>：中涉及了怎么去IF, WHILE,让js更加函数式</p>
+<p><a href="https://book.douban.com/subject/26148763/" target="_blank" rel="external">计算的本质</a>  ：中第六章，完全使用函数做运算，包括数字，字符串， 全部可以用函数表示。</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/08/15/add-webpy-debug/">为Web.py加入调试功能</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年8月15日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>群里人提问webpy怎么在线调试。<br>web.py在国内的一些云如sina云，基本属于入门配置。<br>但是在线默认可能会被关闭调试功能。</p>
+<p>默认webpy的500错误显示和django差不多，如下：</p>
+<p><img src="/images/python/origin_webpy_error.png" alt="Origin Webpy Error"></p>
+<p>和django一样， 通过<code>werkzug</code>就可以达到在线调试效果， 如下：</p>
+<p><img src="/images/python/new_webpy_error.png" alt="New Webpy Error"></p>
+<p>需要修改的如下：<br>web.py中和django不同的是没有异常开关， 需要重写方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span><span class="params">(web.application)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_with_processors</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(processors)</span>:</span></div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                <span class="keyword">if</span> processors:</div><div class="line">                    p, processors = processors[<span class="number">0</span>], processors[<span class="number">1</span>:]</div><div class="line">                    <span class="keyword">return</span> p(<span class="keyword">lambda</span>: process(processors))</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> self.handle()</div><div class="line">            <span class="keyword">except</span> web.HTTPError:</div><div class="line">                <span class="keyword">raise</span></div><div class="line">            <span class="keyword">except</span> (KeyboardInterrupt, SystemExit):</div><div class="line">                <span class="keyword">raise</span></div><div class="line">            <span class="comment">#except:           删除这部分代码，将异常抛出去</span></div><div class="line">            <span class="comment">#    print &gt;&gt; web.debug, traceback.format_exc()</span></div><div class="line">            <span class="comment">#    raise self.internalerror()</span></div><div class="line">        <span class="keyword">return</span> process(self.processors)</div><div class="line">app = Application(urls, globals())</div><div class="line">app = DebuggedApplication(app.wsgifunc(), evalex=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/07/23/async/">异步总结</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年7月23日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <h1 id="async技术一览"><a href="#async技术一览" class="headerlink" title="async技术一览"></a>async技术一览</h1><p>介绍记录异步相关的知识, 涉及到的有<code>pull/push</code>, <code>callback</code>, <code>promise</code>, <code>observable</code>,<code>frp</code>,  <code>rx</code>.</p>
+<p>代码使用的是 <code>Typescipt</code>编写</p>
+<h4 id="pull-push"><a href="#pull-push" class="headerlink" title="pull/push"></a>pull/push</h4><p>这个概念其实一直在用的, 首先最常见的也就是git命令,主动拉取<code>git pull</code>, 主动提交<code>git push</code>,涉及到了一个编程模式的变化.</p>
+<p>pull代码基本意味着主动调用, 然后自己处理一些事情.</p>
+<p>举例如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Product&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Invoice &#123;</div><div class="line">	updateInvoicing(product: Product)&#123;</div><div class="line">		<span class="comment">//....</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Cart &#123;</div><div class="line">	<span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> invoice: Invoice</span>)&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	addProduct(product: Product)&#123;</div><div class="line">		<span class="keyword">this</span>.invoice.updateInvoicing(product);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>push代码意味着发送消息, 让对方处理事情 .</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Product&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Invoice &#123;</div><div class="line">	<span class="keyword">private</span> updateInvoicing(product: Product)&#123;</div><div class="line">		<span class="comment">//....</span></div><div class="line">	&#125;</div><div class="line">	setup(cart: Cart)&#123;</div><div class="line">		cart.onProductAdded((product: Product) =&gt; &#123;</div><div class="line">			<span class="keyword">this</span>.updateInvoicing(product)</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Cart &#123;</div><div class="line">	<span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> invoice: Invoice</span>)&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	addProduct(product: Product)&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.cb)&#123;</div><div class="line">			<span class="keyword">this</span>.cb(product)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	onProductAdded(cb)&#123;</div><div class="line">		<span class="keyword">this</span>.cb = cb</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">private</span> cb: ((Product) =&gt; <span class="built_in">void</span>) = <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意对比下, push中Invoke实际处理代码可以被private了.</p>
+<p>上面代码来自于<a href="https://www.youtube.com/watch?v=v68ppDlvHqs&amp;list=PLAXHIDsdpaEHiEloVh4lRzFf2R85VtKcS&amp;index=4" target="_blank" rel="external">PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz</a></p>
+<p>更多相关的可以看</p>
+<ul>
+<li><p><a href="http://cycle.js.org/streams.html" target="_blank" rel="external">streams</a></p>
+</li>
+<li><p><a href="https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.4" target="_blank" rel="external">3.3.4  A Simulator for Digital Circuits</a></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="http://web.archive.org/web/20071001004937/http://members.verizon.net/olsongt/stackless/why_stackless.html#id36" target="_blank" rel="external">5.6   Pushing Data</a></p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="Callback"><a href="#Callback" class="headerlink" title="Callback"></a>Callback</h4><p>接触到异步第一就是callback,js中处理也是最多的,各种加入callback, 最简单代码如下.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.hello'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'Button clicked'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>简单的代码还好, 但是如果涉及到级联的callback, 就会出现很头疼的问题.</p>
+<ol>
+<li><p>错误处理</p>
+</li>
+<li><p>callback hell</p>
+</li>
+<li><p>代码不可测试</p>
+</li>
+<li><p>组合问题</p>
+</li>
+</ol>
+<p>一些库<a href="http://caolan.github.io/async/" target="_blank" rel="external">Async</a></p>
+<p>   ​</p>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><p>promise是种编程模式, 有各种名词</p>
+<ul>
+<li>twisted中叫defer</li>
+<li>C#中叫Task</li>
+<li>clojure/python3/java中叫Future.</li>
+</ul>
+<p>Promise主要是对象化了一个任务,并且这个任务有状态(<code>Fulfilled</code>, <code>Rejected</code>, <code>Pending</code>), 变成(<code>Fulfilled</code>, <code>Rejected</code>)后就是不可变状态了.</p>
+<p>而且可以级联创建一个个<code>新</code>对象, 新对象处理前面任务的结果, 或者可以组合创建新的promise.</p>
+<p>可以解决callback hell问题.</p>
+<p>代码如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>&lt;<span class="title">T</span>&gt;(<span class="params">delay: <span class="built_in">number</span>, data: T</span>): <span class="title">Promise</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span>  <span class="keyword">new</span> Promise((resolve, reject) =&gt; &#123;   <span class="comment">//创建promise模式, 别的语言/库可能不一样.</span></div><div class="line">        setTimeout(()=&gt;&#123;</div><div class="line">            resolve(data);</div><div class="line">        &#125;, delay);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">wait(<span class="number">10</span>, <span class="string">'wait10'</span>).then(</div><div class="line">    data =&gt; data + <span class="string">' then '</span>           <span class="comment">// 组合处理数据</span></div><div class="line">).then(</div><div class="line">    data =&gt; wait(<span class="number">10</span>, data+<span class="string">' wait10'</span>)  <span class="comment">// 组合新的promise</span></div><div class="line">).then(</div><div class="line">    data =&gt; <span class="built_in">console</span>.log(data)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>promise问题.</p>
+<p>没考虑cancel情况</p>
+<p>如果遇到先后发送2个异步请求, 但是第一个请求返回得晚, 处理影响了第二个请求处理后的数据,就能出现问题.</p>
+<p>问题在这里 <a href="http://efe.baidu.com/blog/defusing-race-conditions-when-using-promises/?qq-pf-to=pcqq.group" target="_blank" rel="external">化解使用 Promise 时的竞态条件</a></p>
+<p>文档相关</p>
+<ul>
+<li><a href="http://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank" rel="external">Deferred Reference</a></li>
+<li><a href="http://liubin.org/promises-book/" target="_blank" rel="external">JavaScript Promise迷你书</a></li>
+</ul>
+<p>更进一步.</p>
+<ul>
+<li><a href="[C# async, await](https://msdn.microsoft.com/en-us/library/hh191443.aspx"><a href="https://msdn.microsoft.com/en-us/library/hh191443.aspx" target="_blank" rel="external">C# async, await</a></a>)</li>
+<li><a href="https://www.python.org/dev/peps/pep-0492/" target="_blank" rel="external">Python async, await</a></li>
+<li><a href="https://tc39.github.io/ecmascript-asyncawait/" target="_blank" rel="external">Javascript async, awit</a></li>
+</ul>
+<p>都可以编译到promise方式.</p>
+<h4 id="observable"><a href="#observable" class="headerlink" title="observable"></a>observable</h4><p>上面的promise部分解决的单数据问题, 但是如果有需求这个异步状态是可变的的咋办?</p>
+<p>在设计模式中有一个模式叫观察者模式(Observable)</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Observable &#123;</div><div class="line">    observers = []</div><div class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</div><div class="line">    &#125;</div><div class="line">    addObserver(observer) &#123;</div><div class="line">        <span class="keyword">this</span>.observers.push(observer);</div><div class="line">    &#125;</div><div class="line">    removeObserver(observer) &#123;</div><div class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.observers.indexOf(observer);</div><div class="line">        <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.observers.splice(index, <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    notifyObservers(message) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> o of <span class="keyword">this</span>.observers) &#123;</div><div class="line">            o(message);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> observable = <span class="keyword">new</span> Observable();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`hello: <span class="subst">$&#123;msg&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">world</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`world: <span class="subst">$&#123;msg&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">observable.addObserver(hello);</div><div class="line">observable.addObserver(world);</div><div class="line"></div><div class="line">observable.notifyObservers(<span class="string">"msg1"</span>)</div><div class="line"></div><div class="line">observable.removeObserver(hello);</div><div class="line">observable.notifyObservers(<span class="string">"msg2"</span>);</div></pre></td></tr></table></figure>
+<p>问题：</p>
+<ul>
+<li>使用方式继承/组合/removeObservable</li>
+<li>同步/异步/多线程问题？</li>
+</ul>
+<p>文档相关</p>
+<p><a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank" rel="external">https://en.wikipedia.org/wiki/Observer_pattern</a></p>
+<h4 id="observable-1"><a href="#observable-1" class="headerlink" title="observable++"></a>observable++</h4><p>解决上一节的使用问题，</p>
+<p>1.简单使用Observable方法</p>
+<p>处理数据</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">proc</span>(<span class="params">msg: <span class="built_in">string</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (msg.length &lt; <span class="number">3</span>) &#123;          <span class="comment">// Filter</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> msgEx = <span class="string">'**'</span> + msg + <span class="string">'**'</span>; <span class="comment">// Map</span></div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(msgEx);            <span class="comment">// Process</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到代码可以拆分成 <code>filter</code> <code>map</code></p>
+<p>来增强Observable, 如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Observable &#123;</div><div class="line">    <span class="comment">// ****</span></div><div class="line">    map(fn) &#123;</div><div class="line">        <span class="keyword">var</span> _inobservable = <span class="keyword">new</span> Observable();</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">_inFn</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">            _inobservable.notifyObservers(fn(msg));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.addObserver(_inFn);</div><div class="line">        <span class="keyword">return</span> _inobservable;</div><div class="line">    &#125;</div><div class="line">    filter(fn) &#123;</div><div class="line">        <span class="keyword">var</span> _inobservable = <span class="keyword">new</span> Observable();</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">_inFn</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (fn(msg)) &#123;</div><div class="line">                _inobservable.notifyObservers(msg);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.addObserver(_inFn);</div><div class="line">        <span class="keyword">return</span> _inobservable;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用方法如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">observable</div><div class="line">    .filter(x =&gt; x.length &gt; <span class="number">3</span>)</div><div class="line">    .map(x =&gt; <span class="string">`**<span class="subst">$&#123;x&#125;</span>**`</span>)</div><div class="line">    .addObserver(x =&gt; <span class="built_in">console</span>.log(x));</div><div class="line"></div><div class="line">observable.notifyObservers(<span class="string">"he"</span>);</div><div class="line">observable.notifyObservers(<span class="string">"hello"</span>);</div></pre></td></tr></table></figure>
+<p>处理removeObservable问题</p>
+<p>原来最大的问题是不能处理匿名函数</p>
+<p>即</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">observable.addObserver(<span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;);</div><div class="line">observable.removeObserver(<span class="comment">/*???*/</span>);</div></pre></td></tr></table></figure>
+<p>解决方法</p>
+<p>修改addObserver</p>
+<p>如下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">addObserver(observer) &#123;</div><div class="line">  <span class="keyword">this</span>.observers.push(observer);</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> index = <span class="keyword">this</span>.observers.indexOf(observer);</div><div class="line">    <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.observers.splice(index, <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要removeObservablel的时候只需要</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> removeHandle = observable.addObserver(<span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;);</div><div class="line">removeHandle();</div></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li>复杂逻辑filter/map 不够</li>
+<li>更加优雅的removeObservable</li>
+</ol>
+<h4 id="FRP"><a href="#FRP" class="headerlink" title="FRP"></a>FRP</h4><p>frp核心一个 <code>Single</code></p>
+<p>//pass</p>
+<h4 id="Rx"><a href="#Rx" class="headerlink" title="Rx"></a>Rx</h4><p>产品级别解决方案。</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/07/14/live-bp-debug/">Wsgi App动态调试</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年7月14日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>默认flask的调试器是个好东西, 出现异常的时候就会动态打开个在线调试器.<br>但是如果不出现异常就比较惨了.<br>返回的结果不对? 一种就是加入<code>import pdb; pdb.set_trace()</code>然后单步调试.<br>第二种就是在感觉有异常的地方人工加入 <code>raise Exception(&quot;xx&quot;)</code>.<br>两种方法都有坏处.需要人工干涉代码.</p>
+<p>于是就想到了python自带的调试器的<code>pdb</code>的<code>bp</code>功能.<br>查询后发现使用的是<code>sys.set_trace</code>功能.<br>简单的办法加入<code>line trace</code>. 在请求参数中指定模块和行数.使用wsgi中间件开始的时候监控程序中运行.到达指定模块*行的时候触发异常.</p>
+<p>代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> DEBUG:</div><div class="line"><span class="keyword">from</span> werkzeug.wrappers <span class="keyword">import</span> Request</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LiveBpMiddleware</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, app, use_exception=Exception<span class="params">(<span class="string">"Break Here"</span>)</span>)</span>:</span></div><div class="line">        self.app = app</div><div class="line">        self.tracing = <span class="keyword">False</span></div><div class="line">        self.org_trace = sys.gettrace()</div><div class="line">        self.use_exception = use_exception</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, environ, start_response)</span>:</span></div><div class="line">        request = Request(environ)</div><div class="line">        livebp = request.args.get(<span class="string">'livebp'</span>, <span class="string">u''</span>)</div><div class="line">        <span class="keyword">if</span> livebp <span class="keyword">and</span> livebp.count(<span class="string">u':'</span>) == <span class="number">1</span>:</div><div class="line">            model, line = livebp.split(<span class="string">u':'</span>)</div><div class="line">            filename = self.lookupmodule(model)</div><div class="line">            <span class="keyword">if</span> filename:</div><div class="line">                self.trace_filename = filename</div><div class="line">                self.trace_line = int(line)</div><div class="line">                self.tracing = <span class="keyword">True</span></div><div class="line">                sys.settrace(self.trace_fun)</div><div class="line">        res = self.app(environ, start_response)</div><div class="line">        <span class="keyword">if</span> self.tracing:</div><div class="line">            self.remove_trace()</div><div class="line">        <span class="keyword">return</span> res</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_trace</span><span class="params">(self)</span>:</span></div><div class="line">        sys.settrace(self.org_trace)</div><div class="line">        self.tracing = <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">trace_fun</span><span class="params">(self, frame, event, arg)</span>:</span></div><div class="line">        <span class="keyword">if</span> event == <span class="string">'line'</span>:</div><div class="line">            line_no = frame.f_lineno</div><div class="line">            filename = frame.f_code.co_filename</div><div class="line">            <span class="keyword">if</span> line_no == self.trace_line <span class="keyword">and</span> os.path.realpath(filename) == os.path.realpath(self.trace_filename):</div><div class="line">                <span class="keyword">print</span> line_no, filename</div><div class="line">                sys.settrace(self.org_trace)</div><div class="line">                self.tracing = <span class="keyword">False</span></div><div class="line">                <span class="keyword">raise</span> self.use_exception</div><div class="line">        <span class="keyword">return</span> self.trace_fun</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lookupmodule</span><span class="params">(self, filename)</span>:</span></div><div class="line">        <span class="string">'copy from pdb model'</span></div><div class="line">        <span class="keyword">if</span> os.path.isabs(filename) <span class="keyword">and</span>  os.path.exists(filename):</div><div class="line">            <span class="keyword">return</span> filename</div><div class="line">        f = os.path.join(sys.path[<span class="number">0</span>], filename)</div><div class="line">        <span class="keyword">if</span> os.path.exists(f):</div><div class="line">            <span class="keyword">return</span> f</div><div class="line">        root, ext = os.path.splitext(filename)</div><div class="line">        <span class="keyword">if</span> ext == <span class="string">''</span>:</div><div class="line">            filename = filename + <span class="string">'.py'</span></div><div class="line">        <span class="keyword">if</span> os.path.isabs(filename):</div><div class="line">            <span class="keyword">return</span> filename</div><div class="line">        <span class="keyword">for</span> dirname <span class="keyword">in</span> sys.path:</div><div class="line">            <span class="keyword">while</span> os.path.islink(dirname):</div><div class="line">                dirname = os.readlink(dirname)</div><div class="line">            fullname = os.path.join(dirname, filename)</div><div class="line">            <span class="keyword">if</span> os.path.exists(fullname):</div><div class="line">                <span class="keyword">return</span> fullname</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div></pre></td></tr></table></figure>
+<p>测试如下<br><img src="/images/python/livebp_test.png" alt="LiveBp Test"></p>
+<p>参考<br><a href="http://pymotw.com/2/sys/tracing.html" target="_blank" rel="external">SysTracing</a></p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/06/07/add-django-debug/">为Django加入调试功能</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年6月7日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>默认的django的错误报告很不友好,就像这样<br><img src="/images/python/origin_django_error.png" alt="Origin Django Error"><br>总的来说只能看看哪里错了啊, 不是特别友好.</p>
+<p>相比下来Flask带的调试功能就强多了,如图<br><img src="/images/python/flask_error.png" alt="Flask Error"><br>而且有交互功能.</p>
+<p>查找得出Flask使用的是<code>werkzeug</code>中的一个功能.<code>werkzeug</code>是个wsgi工具库.而wsgi有是个简单的协议可以轻轻松松包装加入hook类似功能.</p>
+<p>修改django工程.<br>在<code>settings.py</code>文件结尾加入如下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> DEBUG:</div><div class="line">    WSGI_APPLICATION = <span class="string">'yourproject.wsgi_debug.application'</span></div><div class="line">    DEBUG_PROPAGATE_EXCEPTIONS = <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<p>在project的<code>wsgi.py</code>目录下加入文件’wsgi_debug.py’.<br>文件中加入代码.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> DEBUG:</div><div class="line"><span class="keyword">from</span> .wsgi <span class="keyword">import</span> application</div><div class="line"><span class="keyword">from</span> werkzeug.debug <span class="keyword">import</span> DebuggedApplication</div><div class="line"></div><div class="line">application = DebuggedApplication(application, <span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>测试结果如下.<br><img src="/images/python/new_django_error.png" alt="Flask Error"></p>
+<p>现在django也有了在线调试功能了.</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2015/01/02/old-class/">Python 旧式类的一个坑</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015年1月2日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>来源于群的一个问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">		<span class="comment">#print(item) # 1. </span></div><div class="line">		<span class="keyword">pass</span></div><div class="line">		<span class="comment">#return lambda : "foo" # 2.</span></div><div class="line">	<span class="comment">#def __str__(self):</span></div><div class="line">	<span class="comment">#    return "foo"</span></div><div class="line">f = Foo()</div><div class="line"><span class="comment">#print(f)  # 3.</span></div></pre></td></tr></table></figure>
+<p>运行, 发现不会有问题, 但是如果去掉第三个注释的部分, 运行的话会发现<code>TypeError: &#39;NoneType&#39; object is not callable</code>这个问题.</p>
+<p>开始想到的就是旧式类和新式类的可能性, 测试方法很简单</p>
+<ul>
+<li>直接放到Py3上运行 </li>
+<li>将<code>Foo</code> 修复为 <code>Foo(object)</code></li>
+</ul>
+<p>发现都能成功运行.<br>下面测试为何会失败.<br>加入调试代码去掉第一个注释. 发现在调用<code>__getattr__</code> 上调用了 <code>__str__</code> 而函数<code>__getattr__</code>返回的是 <code>None</code> 猜测根据异常是需要一个Callable的函数,去掉第二个注释, 结果输出正常.</p>
+<p>查看旧式类的属性 加入代码<code>dir(f)</code>发现结果<code>[&#39;__doc__&#39;, &#39;__module__&#39;]</code>,<br>查看新式类的属性 结果为<code>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;]</code>明显发现旧式类中没有<code>__str__</code>属性, 但是使用<code>print</code>函数时会去猜测,当函数有<code>__getattr__</code>时, 会将旧式类当作新式类处理,需要有<code>__str__</code>属性, 而没有的话会调用内部默认的打印函数去打印. 对新式类的话, 优先使用类的<code>__str__</code>函数, 如果没有的话就往上找,而<code>object</code>中有默认的<code>__str__</code>实现, 所有就会用<code>object</code>的默认的函数. 不会出现输出问题.</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2014/12/28/hack-python-function/">Hack一下Python的默认参数的坑</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2014年12月28日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        
+
+        
+          <p>面试题, “为何Python中的函数不能使用可变参数”.</p>
+<p>举例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a=[])</span>:</span></div><div class="line">    a.append(<span class="number">1</span>)</div><div class="line">    <span class="keyword">print</span> a</div><div class="line"></div><div class="line">foo()</div><div class="line">foo()</div></pre></td></tr></table></figure></p>
+<p>结果将是<br><code>[1]</code><br><code>[1, 1]</code></p>
+<p>一般的解决方法如下(代码来自于<a href="http://www.dongwm.com/archives/pythonmo-fa-er/" target="_blank" rel="external">Python的魔法二:开发的’坑’</a>)::</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a=None)</span>:</span></div><div class="line">	<span class="keyword">if</span> a <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">		a = []</div><div class="line">    a.append(<span class="number">1</span>)</div><div class="line">    <span class="keyword">print</span> a</div></pre></td></tr></table></figure>
+<p>由于默认参数存在<code>fun.func_defaults</code>中,配合装饰器可以简单作下hack</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hack_default</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrap</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">        old_func_defaults = copy.deepcopy(func.func_defaults)</div><div class="line">        func(*args, **kwargs)</div><div class="line">        func.func_defaults = old_func_defaults</div><div class="line">    <span class="keyword">return</span> wrap</div><div class="line"></div><div class="line"><span class="meta">@hack_default</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a=[])</span>:</span></div><div class="line">    a.append(<span class="number">1</span>)</div><div class="line">    <span class="keyword">print</span> a</div><div class="line"></div><div class="line">foo()</div><div class="line">foo()</div></pre></td></tr></table></figure>
+<p>这下就不要担心参数被修改的问题了, 因为每次修改都被拷贝了一份</p>
+
+        
+      
+    </div>
+
+    
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    
+    
+      <a class="next" href="/page/2/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+          </div>
+          
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

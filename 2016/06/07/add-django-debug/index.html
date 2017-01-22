@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="为Django加入调试功能"/>
+
+
+
+
+  <meta name="keywords" content="python,django," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/2016/06/07/add-django-debug/"/>
+
+
+<meta name="description" content="默认的django的错误报告很不友好,就像这样总的来说只能看看哪里错了啊, 不是特别友好.
+相比下来Flask带的调试功能就强多了,如图而且有交互功能.
+查找得出Flask使用的是werkzeug中的一个功能.werkzeug是个wsgi工具库.而wsgi有是个简单的协议可以轻轻松松包装加入hook类似功能.
+修改django工程.在settings.py文件结尾加入如下代码
+123if DEBU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Django加入调试功能">
+<meta property="og:url" content="http://zhuangzhuang.github.io/2016/06/07/add-django-debug/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="默认的django的错误报告很不友好,就像这样总的来说只能看看哪里错了啊, 不是特别友好.
+相比下来Flask带的调试功能就强多了,如图而且有交互功能.
+查找得出Flask使用的是werkzeug中的一个功能.werkzeug是个wsgi工具库.而wsgi有是个简单的协议可以轻轻松松包装加入hook类似功能.
+修改django工程.在settings.py文件结尾加入如下代码
+123if DEBU">
+<meta property="og:image" content="http://zhuangzhuang.github.io/images/python/origin_django_error.png">
+<meta property="og:image" content="http://zhuangzhuang.github.io/images/python/flask_error.png">
+<meta property="og:image" content="http://zhuangzhuang.github.io/images/python/new_django_error.png">
+<meta property="og:updated_time" content="2017-01-22T13:38:03.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为Django加入调试功能">
+<meta name="twitter:description" content="默认的django的错误报告很不友好,就像这样总的来说只能看看哪里错了啊, 不是特别友好.
+相比下来Flask带的调试功能就强多了,如图而且有交互功能.
+查找得出Flask使用的是werkzeug中的一个功能.werkzeug是个wsgi工具库.而wsgi有是个简单的协议可以轻轻松松包装加入hook类似功能.
+修改django工程.在settings.py文件结尾加入如下代码
+123if DEBU">
+<meta name="twitter:image" content="http://zhuangzhuang.github.io/images/python/origin_django_error.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> 为Django加入调试功能 · 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          为Django加入调试功能
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016年6月7日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        <p>默认的django的错误报告很不友好,就像这样<br><img src="/images/python/origin_django_error.png" alt="Origin Django Error"><br>总的来说只能看看哪里错了啊, 不是特别友好.</p>
+<p>相比下来Flask带的调试功能就强多了,如图<br><img src="/images/python/flask_error.png" alt="Flask Error"><br>而且有交互功能.</p>
+<p>查找得出Flask使用的是<code>werkzeug</code>中的一个功能.<code>werkzeug</code>是个wsgi工具库.而wsgi有是个简单的协议可以轻轻松松包装加入hook类似功能.</p>
+<p>修改django工程.<br>在<code>settings.py</code>文件结尾加入如下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> DEBUG:</div><div class="line">    WSGI_APPLICATION = <span class="string">'yourproject.wsgi_debug.application'</span></div><div class="line">    DEBUG_PROPAGATE_EXCEPTIONS = <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<p>在project的<code>wsgi.py</code>目录下加入文件’wsgi_debug.py’.<br>文件中加入代码.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> DEBUG:</div><div class="line"><span class="keyword">from</span> .wsgi <span class="keyword">import</span> application</div><div class="line"><span class="keyword">from</span> werkzeug.debug <span class="keyword">import</span> DebuggedApplication</div><div class="line"></div><div class="line">application = DebuggedApplication(application, <span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>测试结果如下.<br><img src="/images/python/new_django_error.png" alt="Flask Error"></p>
+<p>现在django也有了在线调试功能了.</p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/python/">python</a>
+          
+            <a href="/tags/django/">django</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/07/14/live-bp-debug/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Wsgi App动态调试</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/01/02/old-class/">
+        <span class="next-text nav-default">Python 旧式类的一个坑</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>

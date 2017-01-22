@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Fable 排序"/>
+
+
+
+
+  <meta name="keywords" content="async,javascript,fable," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="壮壮的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.x" />
+
+
+
+<link rel="canonical" href="http://zhuangzhuang.github.io/2017/01/22/fable-async/"/>
+
+
+<meta name="description" content="Fable来做异步排序题目来自于我用js写了一个冒泡排序法，怎么用html和css把排序过程展现出来？
+简单的说明就是在js中怎么做sleep来做到异步效果。
+原来的解决方法是用windjs 不够后来老赵也不维护了，
+es7中有async, await方案，不过暂时需要babel去编译， 原生支持async/await的有微软的Edge，和对于的js引擎。
+下面来将Fable这个应该是F#的js版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fable 排序">
+<meta property="og:url" content="http://zhuangzhuang.github.io/2017/01/22/fable-async/index.html">
+<meta property="og:site_name" content="壮壮的博客">
+<meta property="og:description" content="Fable来做异步排序题目来自于我用js写了一个冒泡排序法，怎么用html和css把排序过程展现出来？
+简单的说明就是在js中怎么做sleep来做到异步效果。
+原来的解决方法是用windjs 不够后来老赵也不维护了，
+es7中有async, await方案，不过暂时需要babel去编译， 原生支持async/await的有微软的Edge，和对于的js引擎。
+下面来将Fable这个应该是F#的js版">
+<meta property="og:updated_time" content="2017-01-22T13:16:12.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fable 排序">
+<meta name="twitter:description" content="Fable来做异步排序题目来自于我用js写了一个冒泡排序法，怎么用html和css把排序过程展现出来？
+简单的说明就是在js中怎么做sleep来做到异步效果。
+原来的解决方法是用windjs 不够后来老赵也不维护了，
+es7中有async, await方案，不过暂时需要babel去编译， 原生支持async/await的有微软的Edge，和对于的js引擎。
+下面来将Fable这个应该是F#的js版">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> Fable 排序 · 壮壮的博客 </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">壮壮的博客</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">壮壮的博客</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Fable 排序
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年1月22日
+        </span>
+      </div>
+    </header>
+
+    
+      <div class="post-toc" id="post-toc">
+        <h2 class="post-toc-title">文章目录</h2>
+        <div class="post-toc-content">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Fable来做异步排序"><span class="toc-text">Fable来做异步排序</span></a></li></ol>
+        </div>
+      </div>
+    
+
+    <div class="post-content">
+      
+        <h1 id="Fable来做异步排序"><a href="#Fable来做异步排序" class="headerlink" title="Fable来做异步排序"></a>Fable来做异步排序</h1><p>题目来自于<a href="https://www.zhihu.com/question/41642706" target="_blank" rel="external">我用js写了一个冒泡排序法，怎么用html和css把排序过程展现出来？</a></p>
+<p>简单的说明就是在js中怎么做sleep来做到异步效果。</p>
+<p>原来的解决方法是用<a href="https://www.zhihu.com/question/41642706/answer/92225439" target="_blank" rel="external">windjs</a> 不够后来老赵也不维护了，</p>
+<p>es7中有async, await方案，不过暂时需要babel去编译， 原生支持async/await的有微软的Edge，和对于的js引擎。</p>
+<p>下面来将<a href="http://fsprojects.github.io/Fable/" target="_blank" rel="external">Fable</a>这个应该是F#的js版本，F#有很强的一个技术叫<a href="https://msdn.microsoft.com/visualfsharpdocs/conceptual/computation-expressions-%5bfsharp%5d" target="_blank" rel="external">Computation Expressions</a>定义好预设的几个函数后，就可以组合使用。将原来的流程全部碎片成函数，但是编写的时候还是按照顺序编写，自己在碎片函数中控制流向。</p>
+<p>F#同步排序如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let swap (arr: int array) i j = </div><div class="line">    let tmp = arr.[i]</div><div class="line">    arr.[i] &lt;- arr.[j]</div><div class="line">    arr.[j] &lt;- tmp</div><div class="line"></div><div class="line">let bubbleSort (arr: int array) = </div><div class="line">    for x in [0..arr.Length-1] do</div><div class="line">        for y in [0 .. arr.Length-x-1] do</div><div class="line">            if arr.[y] &gt; arr.[y+1] then</div><div class="line">                swap arr y (y+1)</div></pre></td></tr></table></figure>
+<p>浏览器启动后都是一瞬间结束，如果要暂停一会儿查看内部的信息会很困难。</p>
+<p>基于F#的async可以轻松达到效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let asyncBubbleSort (arr: int array) = async &#123;  #1</div><div class="line">    for x in [0..arr.Length-1] do</div><div class="line">        for y in [0 .. arr.Length-x-1] do</div><div class="line">            if arr.[y] &gt; arr.[y+1] then</div><div class="line">                do! Async.Sleep(500)           #2</div><div class="line">                printfn &quot;swaping: %d &lt;-&gt; %d&quot; arr.[y] arr.[y+1]</div><div class="line">                swap arr y (y+1)</div><div class="line">    printfn &quot;down!&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let arr = [|0;11;2;4;7;3|]</div><div class="line">asyncBubbleSort arr</div><div class="line">|&gt; Async.StartImmediate  #3</div></pre></td></tr></table></figure>
+<p>再3处加入一点点代码就可以达到效果。</p>
+<p>参考</p>
+<p><a href="http://tomasp.net/academic/papers/async/" target="_blank" rel="external">http://tomasp.net/academic/papers/async/</a></p>
+<p><a href="http://tomasp.net/academic/papers/computation-zoo/" target="_blank" rel="external">http://tomasp.net/academic/papers/computation-zoo/</a></p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/async/">async</a>
+          
+            <a href="/tags/javascript/">javascript</a>
+          
+            <a href="/tags/fable/">fable</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/01/22/fix-pycharm-jupyter/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">解决Pycharm不能使用jupyter问题</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/10/24/babel-trans-for/">
+        <span class="next-text nav-default">优化javascript中的forEach</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:zhuangzhuang1988@outlook.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://github.com/zhuangzhuang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/3213559533" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-zhuang-48" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">壮壮</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.x"></script>
+
+  </body>
+</html>
