@@ -11,12 +11,12 @@
 
 
 
-  <meta name="description" content="Principles of Reactive Programming-2"/>
+  <meta name="description" content="Principles of Reactive Programming"/>
 
 
 
 
-  <meta name="keywords" content="scala,coursera," />
+  <meta name="keywords" content="scala,coursera,rx," />
 
 
 
@@ -38,16 +38,16 @@ Identity and Change说明两个变量可以相同
 1234567val x = new Objval y = new Objf(x, y)val x = new Objval y = new Objf(x, x)
 如果 f(x, y) 和 f(x, x) 相同可以说明">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Principles of Reactive Programming-2">
+<meta property="og:title" content="Principles of Reactive Programming">
 <meta property="og:url" content="http://zhuangzhuang.github.io/2013/11/12/Principles-of-Reactive-Programming-2/index.html">
 <meta property="og:site_name" content="壮壮的博客">
 <meta property="og:description" content="第二节课笔记Function and State使用Bank说明可变的Object,使用2个例子说明不变函数, 可变函数
 Identity and Change说明两个变量可以相同
 1234567val x = new Objval y = new Objf(x, y)val x = new Objval y = new Objf(x, x)
 如果 f(x, y) 和 f(x, x) 相同可以说明">
-<meta property="og:updated_time" content="2017-01-22T12:48:45.000Z">
+<meta property="og:updated_time" content="2017-01-22T14:20:42.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Principles of Reactive Programming-2">
+<meta name="twitter:title" content="Principles of Reactive Programming">
 <meta name="twitter:description" content="第二节课笔记Function and State使用Bank说明可变的Object,使用2个例子说明不变函数, 可变函数
 Identity and Change说明两个变量可以相同
 1234567val x = new Objval y = new Objf(x, y)val x = new Objval y = new Objf(x, x)
@@ -64,10 +64,20 @@ Identity and Change说明两个变量可以相同
 
 
   
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?88c35fbfd918c4b6638562d858194f2d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
-    <title> Principles of Reactive Programming-2 · 壮壮的博客 </title>
+
+    <title> Principles of Reactive Programming · 壮壮的博客 </title>
   </head>
 
   <body>
@@ -144,7 +154,7 @@ Identity and Change说明两个变量可以相同
     <header class="post-header">
       <h1 class="post-title">
         
-          Principles of Reactive Programming-2
+          Principles of Reactive Programming
         
       </h1>
 
@@ -157,7 +167,7 @@ Identity and Change说明两个变量可以相同
 
     
       <div class="post-toc" id="post-toc">
-        <h2 class="post-toc-title">文章目录</h2>
+        <h2 class="post-toc-title">Contents</h2>
         <div class="post-toc-content">
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第二节课笔记"><span class="toc-text">第二节课笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Function-and-State"><span class="toc-text">Function and State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Identity-and-Change"><span class="toc-text">Identity and Change</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loops"><span class="toc-text">Loops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Completed-Extended-Example-Discrete-Event-Simulation"><span class="toc-text">Completed Extended Example: Discrete Event Simulation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discrete-Event-Simulation-API-and-Usage"><span class="toc-text">Discrete Event Simulation: API and Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discrete-Event-Simluation-Implementation-and-Test"><span class="toc-text">Discrete Event Simluation: Implementation and Test</span></a></li></ol></li></ol></li></ol>
         </div>
@@ -210,6 +220,8 @@ Identity and Change说明两个变量可以相同
           
             <a href="/tags/coursera/">coursera</a>
           
+            <a href="/tags/rx/">rx</a>
+          
         </div>
 
         
@@ -218,7 +230,7 @@ Identity and Change说明两个变量可以相同
       <a class="prev" href="/2014/05/10/2014-5-10-python-lang/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">Python语法 <-</span>
-        <span class="prev-text nav-mobile">上一篇</span>
+        <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
@@ -232,6 +244,10 @@ Identity and Change说明两个变量可以相同
           </div>
           
   <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2013/11/12/Principles-of-Reactive-Programming-2/"
+           data-title="Principles of Reactive Programming" data-url="http://zhuangzhuang.github.io/2013/11/12/Principles-of-Reactive-Programming-2/">
+      </div>
     
   </div>
 
@@ -272,11 +288,11 @@ Identity and Change说明两个变量可以相同
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
   </span>
   
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -284,7 +300,7 @@ Identity and Change说明两个变量可以相同
     
     &copy; 
      
-      2015 - 
+      2014 - 
     
     2017
 
@@ -302,6 +318,21 @@ Identity and Change说明两个变量可以相同
     </div>
 
     
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhuangzhuang1988"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
 
 
     
